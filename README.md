@@ -1,6 +1,6 @@
 # 🧩 FastAPI CRUD App
 
-A minimal FastAPI application with full CRUD support for users, using SQLAlchemy, Pydantic, Docker, and GitHub Actions for CI/CD.
+A minimal FastAPI application with full CRUD support for users, using SQLAlchemy, Pydantic, Docker, Kubernetes, and GitHub Actions for CI/CD.
 
 ---
 
@@ -11,6 +11,7 @@ A minimal FastAPI application with full CRUD support for users, using SQLAlchemy
 - Pydantic request/response validation
 - SQLite database
 - Dockerized
+- Kubernetes deployment (via Minikube or cloud)
 - GitHub Actions CI pipeline with linting
 - Auto-generated Swagger UI (`/docs`)
 
@@ -33,6 +34,10 @@ crud-app/
 ├── Dockerfile            # Docker container config
 ├── .dockerignore         # Files to ignore in Docker builds
 ├── .gitignore
+│
+├── k8s/                  # Kubernetes manifests
+│   ├── deployment.yaml
+│   └── service.yaml
 │
 ├── .github/
 │   └── workflows/
@@ -75,27 +80,55 @@ docker build -t fastapi-app .
 docker run -p 8000:8000 fastapi-app
 ```
 
-### Visit:
+---
 
-- http://localhost:8000
-- http://localhost:8000/docs
+## ⚙️ Kubernetes (Minikube)
+
+### 1. Start Minikube
+
+```bash
+minikube start
+```
+
+### 2. Use Minikube Docker daemon
+
+```bash
+eval $(minikube docker-env)
+docker build -t fastapi-app .
+```
+
+### 3. Apply K8s manifests
+
+```bash
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+```
+
+### 4. Access the app
+
+```bash
+minikube service fastapi-service
+```
+
+This will open the FastAPI app in your browser via NodePort.
 
 ---
 
 ## ✅ CI/CD (GitHub Actions)
 
-- Runs on every push and pull request to `main`
-- Uses [Ruff](https://github.com/astral-sh/ruff) for lightning-fast linting
-- Placeholder step for tests
+- Lints Python code using Ruff
+- Runs on every push and PR to `main`
+- Placeholder for test integration
 
 ---
 
 ## 🛠️ Future Ideas
 
-- Add user authentication (OAuth2/JWT)
+- Add user authentication (OAuth2 / JWT)
 - Add unit/integration tests with `pytest`
 - Connect to PostgreSQL or MySQL
-- Deploy to cloud (Kubernetes / GCP / Azure)
+- Add production-grade Ingress (with cert-manager)
+- Deploy to GKE, AKS, or EKS with Helm
 
 ---
 
