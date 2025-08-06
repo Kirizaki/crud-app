@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+.venv/
+
+# SQLite database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# VSCode / PyCharm / JetBrains
+.vscode/
+.idea/
+*.swp
+
+# macOS system files
+.DS_Store
+
+# Docker
+*.tar
+.dockerignore
+
+# Local builds
+build/
+dist/
+*.egg-info/
+
+# GitHub workflows runtime files
+.github/workflows/*.log
+
+# Misc
+*.bak
+.env
+*.pdf
+*_temp.html
