@@ -1,0 +1,4 @@
+fastapi     # web framework
+uvicorn     # ASGI server to run FastApi
+sqlalchemy  # Object-Relational-Mapping for DB handling
+pydantic    # data validation for request/response
