@@ -117,6 +117,7 @@ This will open the FastAPI app in your browser via NodePort.
 ## ✅ CI/CD (GitHub Actions)
 
 - Lints Python code using Ruff
+  - local check: `act -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest`
 - Runs on every push and PR to `main`
 - Placeholder for test integration
 
